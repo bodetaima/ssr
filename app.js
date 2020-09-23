@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
 import template from './src/template'
-import ssr from './src/server'
+import ssr from './src/ssr'
 import data from './assets/data.json'
 
 const app = express()
@@ -23,14 +23,7 @@ let initialState = {
 // server rendered home page
 app.get('/', (req, res) => {
   const { preloadedState, content}  = ssr(initialState)
-  const response = template("Server Rendered Page", preloadedState, content)
+  const response = template("Server Rendered Page", preloadedState)
   res.setHeader('Cache-Control', 'assets, max-age=604800')
   res.send(response);
-});
-
-// Pure client side rendered page
-app.get('/client', (req, res) => {
-  let response = template('Client Side Rendered page')
-  res.setHeader('Cache-Control', 'assets, max-age=604800')
-  res.send(response)
 });
