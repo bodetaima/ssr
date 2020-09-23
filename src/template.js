@@ -2,7 +2,10 @@ export default function template(title, initialState = {}) {
   let page = `<!DOCTYPE html>
               <html lang="en">
               <head>
-                <meta charset="utf-8">
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <meta name="description" content="This is a Test React App for SEO Improving" />
                 <script>
                   window.__STATE__ = ${JSON.stringify(initialState)}
                 </script>
